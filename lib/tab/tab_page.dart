@@ -34,8 +34,6 @@ class _TabPageState extends State<TabPage> {
     return Scaffold(
       body: _pages[_currentIndex],
       bottomNavigationBar: Container(
-        width: 375,
-        height: 78,
         decoration: const BoxDecoration(
           color: Colors.white,
           boxShadow: [
