@@ -4,6 +4,7 @@ import 'account/account_page.dart';
 import 'home/home_page.dart';
 import 'lacation/location_page.dart';
 import 'search/search_page.dart';
+import 'story/story_page.dart';
 
 class TabPage extends StatefulWidget {
   const TabPage({super.key});
@@ -20,6 +21,7 @@ class _TabPageState extends State<TabPage> {
     HomePage(),
     LocationPage(),
     SearchPage(),
+    StoryPage(),
     AccountPage(),
     // ProfileScreen(
     //   providers: [

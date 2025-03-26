@@ -97,7 +97,10 @@ class _LocationPageState extends State<LocationPage> {
                     ),
                   ),
                   child: NaverMap(
-                    options: const NaverMapViewOptions(),
+                    options: const NaverMapViewOptions(
+                      locationButtonEnable: true,
+                      // initialCameraPosition: _userLocation,
+                    ),
                     onMapReady: (controller) {},
                   ),
                 ),
