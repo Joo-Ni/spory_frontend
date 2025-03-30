@@ -7,7 +7,7 @@ plugins {
 
 android {
     namespace = "com.example.sports_connect"
-    compileSdkVersion 33
+    compileSdk = 35
     // compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
 

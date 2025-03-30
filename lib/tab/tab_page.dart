@@ -69,6 +69,10 @@ class _TabPageState extends State<TabPage> {
               label: '카테고리',
             ),
             BottomNavigationBarItem(
+              icon: Icon(Icons.check),
+              label: 'Spory',
+            ),
+            BottomNavigationBarItem(
               icon: Icon(Icons.person),
               label: '마이페이지',
             ),

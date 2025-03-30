@@ -30,7 +30,7 @@ class _HomePageState extends State<HomePage> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: Text('스포츠 커넥트'),
+          title: Text('Spory'),
         ),
         body: Padding(
           padding: const EdgeInsets.all(8),

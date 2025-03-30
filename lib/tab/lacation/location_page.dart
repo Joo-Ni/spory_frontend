@@ -31,7 +31,7 @@ class _LocationPageState extends State<LocationPage> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: Text('스포츠 커넥트'),
+          title: Text('Spory'),
         ),
         body: Padding(
           padding: const EdgeInsets.all(8),
