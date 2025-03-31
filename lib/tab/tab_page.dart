@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:location/location.dart';
 
 import 'account/account_page.dart';
 import 'home/home_page.dart';
-import 'lacation/location_page.dart';
+import 'location/location_page.dart';
 import 'search/search_page.dart';
 import 'story/story_page.dart';
+import 'location/loacation_model.dart';
 
 class TabPage extends StatefulWidget {
   const TabPage({super.key});
@@ -15,26 +17,36 @@ class TabPage extends StatefulWidget {
 
 class _TabPageState extends State<TabPage> {
   int _currentIndex = 0;
+  LocationData? locationData;
 
-  final _pages = [
-    // 변하지 않을 것이므로 final
-    HomePage(),
-    LocationPage(),
-    SearchPage(),
-    StoryPage(),
-    AccountPage(),
-    // ProfileScreen(
-    //   providers: [
-    //     EmailAuthProvider(),
-    //   ],
-    //   avatarSize: 24,
-    // ),
-  ];
+  @override
+  void initState() {
+    super.initState();
+    _initializeServices(); // 초기화 함수 호출
+  }
+
+  Future<void> _initializeServices() async {
+    await NMapService.initializeNaverMap();
+    locationData = await LocationService.getLocationData();
+    if (mounted) {
+      setState(() {});
+    }
+  }
+
+  List<Widget> getPages() {
+    return [
+      HomePage(),
+      LocationPage(locationData: locationData), // 수정된 부분
+      SearchPage(),
+      StoryPage(),
+      AccountPage(),
+    ];
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _pages[_currentIndex],
+      body: getPages()[_currentIndex],
       bottomNavigationBar: Container(
         decoration: const BoxDecoration(
           color: Colors.white,
@@ -69,7 +81,7 @@ class _TabPageState extends State<TabPage> {
               label: '카테고리',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.check),
+              icon: Icon(Icons.fitness_center_rounded),
               label: 'Spory',
             ),
             BottomNavigationBarItem(

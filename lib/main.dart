@@ -1,16 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_naver_map/flutter_naver_map.dart';
+import 'package:location/location.dart';
 
+import 'tab/location/loacation_model.dart';
 import 'tab/tab_page.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await NaverMapSdk.instance.initialize(
-    clientId: 'cknqa158d7',
-    onAuthFailed: (ex) {
-      debugPrint("********* 네이버맵 인증오류 : $ex *********");
-    },
-  );
+  await NMapService.initializeNaverMap();
+  LocationData locationData = await LocationService.getLocationData();
+
   runApp(const MyApp());
 }
 

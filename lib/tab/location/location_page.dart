@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_naver_map/flutter_naver_map.dart';
+import 'package:location/location.dart';
 
 class LocationPage extends StatefulWidget {
-  const LocationPage({super.key});
+  final LocationData? locationData;
+  const LocationPage({required this.locationData, super.key});
 
   @override
   State<LocationPage> createState() => _LocationPageState();
@@ -97,9 +99,16 @@ class _LocationPageState extends State<LocationPage> {
                     ),
                   ),
                   child: NaverMap(
-                    options: const NaverMapViewOptions(
+                    options: NaverMapViewOptions(
                       locationButtonEnable: true,
-                      // initialCameraPosition: _userLocation,
+                      initialCameraPosition: NCameraPosition(
+                          target: NLatLng(
+                            widget.locationData?.latitude ?? 37.5665,
+                            widget.locationData?.longitude ?? 126.9780,
+                          ),
+                          zoom: 10,
+                          bearing: 0,
+                          tilt: 0),
                     ),
                     onMapReady: (controller) {},
                   ),
