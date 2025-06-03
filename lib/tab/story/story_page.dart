@@ -41,7 +41,7 @@ class _StoryPageState extends State<StoryPage> {
             child: Container(
               decoration: BoxDecoration(
                 color: Colors.grey[200], // 배경색
-                borderRadius: BorderRadius.circular(16.0), // 둥근 모서리
+                borderRadius: BorderRadius.circular(18.0), // 둥근 모서리
               ),
               child: Row(
                 mainAxisSize: MainAxisSize.min, // Row의 크기를 자식 위젯에 맞춥니다.
@@ -59,7 +59,7 @@ class _StoryPageState extends State<StoryPage> {
                         color: _showCalendar
                             ? Color.fromARGB(255, 43, 180, 153)
                             : Colors.transparent,
-                        borderRadius: BorderRadius.circular(16.0),
+                        borderRadius: BorderRadius.circular(18.0),
                       ),
                       child: Text(
                         '캘린더',
@@ -83,7 +83,7 @@ class _StoryPageState extends State<StoryPage> {
                         color: !_showCalendar
                             ? Color.fromARGB(255, 43, 180, 153)
                             : Colors.transparent,
-                        borderRadius: BorderRadius.circular(16.0),
+                        borderRadius: BorderRadius.circular(18.0),
                       ),
                       child: Text(
                         '리스트',
@@ -163,8 +163,7 @@ class _StoryPageState extends State<StoryPage> {
             formatButtonVisible: false, // 형식 변경 버튼 숨기기 (월, 주 등)
             titleCentered: true, // 헤더 타이틀 중앙 정렬
           ),
-        ),
-        // 선택된 날짜에 대한 추가 정보 또는 이벤트를 표시할 수 있는 공간
+        ), // 선택된 날짜에 대한 추가 정보 또는 이벤트를 표시할 수 있는 공간
         Expanded(
           child: Center(
             child: _selectedDay != null
