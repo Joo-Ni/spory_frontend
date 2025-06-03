@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:location/location.dart';
 
 import 'account/account_page.dart';
-import 'home/home_page.dart';
+// import 'home/home_page.dart';
 import 'location/location_page.dart';
 import 'search/search_page.dart';
 import 'story/story_page.dart';
@@ -35,7 +35,7 @@ class _TabPageState extends State<TabPage> {
 
   List<Widget> getPages() {
     return [
-      HomePage(),
+      //HomePage(),
       LocationPage(locationData: locationData), // 수정된 부분
       SearchPage(),
       StoryPage(),
@@ -68,10 +68,10 @@ class _TabPageState extends State<TabPage> {
             });
           },
           items: const <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: '홈',
-            ),
+            // BottomNavigationBarItem(
+            //   icon: Icon(Icons.home),
+            //   label: '홈',
+            // ),
             BottomNavigationBarItem(
               icon: Icon(Icons.place),
               label: '지도',
