@@ -24,9 +24,6 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    // Size screenSize = MediaQuery.of(context).size;
-    // double width = screenSize.width;
-    // double height = screenSize.height;
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
