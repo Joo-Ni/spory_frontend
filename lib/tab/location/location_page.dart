@@ -16,6 +16,10 @@ class _LocationPageState extends State<LocationPage> {
   LocationData? _currentLocationData; // 현재 위치 정보를 저장할 변수
   NLocationOverlay? _locationOverlay; // 현재 위치 오버레이를 저장할 변수
 
+  // 추가할 마커 데이터
+  static const NLatLng _gymwayLocation = NLatLng(37.324335, 127.124953);
+  static const String _gymwayName = "짐웨이";
+
   final List<String> sports = [
     '축구',
     '야구',
@@ -74,8 +78,9 @@ class _LocationPageState extends State<LocationPage> {
       _locationOverlay!.setCircleColor(Colors.blue.withOpacity(0.3));
 
       // assets/sub.png 파일이 존재해야 합니다. pubspec.yaml에도 assets 폴더를 명시해야 합니다.
+      // 실제 프로젝트에서는 해당 경로에 이미지를 추가해야 합니다.
       _locationOverlay!
-          .setSubIcon(NOverlayImage.fromAssetImage("assets/sub.png"));
+          .setSubIcon(const NOverlayImage.fromAssetImage("assets/sub.png"));
       _locationOverlay!.setSubIconSize(const Size(15, 15));
       _locationOverlay!.setSubAnchor(const NPoint(0.5, 1));
 
@@ -88,6 +93,31 @@ class _LocationPageState extends State<LocationPage> {
         _locationOverlay!.setBearing(0);
       }
       _locationOverlay!.setIsVisible(true);
+    }
+  }
+
+  // 새로운 함수: 짐웨이 마커를 추가
+  void _addGymwayMarker() {
+    if (_mapController != null) {
+      final marker = NMarker(
+        id: 'gymway', // 마커 고유 ID
+        position: _gymwayLocation, // 짐웨이 좌표
+        caption: NOverlayCaption(text: _gymwayName), // 마커 이름
+        // 추가적인 마커 설정 (예: 아이콘, 캡션 스타일 등)
+        icon: const NOverlayImage.fromAssetImage(
+            'assets/marker_icon.png'), // 예시 아이콘 (직접 추가해야 함)
+        // size: Size(30, 40), // 마커 크기 조정
+      );
+
+      _mapController!.addOverlay(marker); // 지도에 마커 추가
+
+      // 마커 탭 리스너 추가 (선택 사항)
+      marker.setOnTapListener((overlay) {
+        debugPrint("$_gymwayName 마커 탭됨!");
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('$_gymwayName 마커를 탭했습니다!')),
+        );
+      });
     }
   }
 
@@ -107,7 +137,13 @@ class _LocationPageState extends State<LocationPage> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('Spory'),
+          title: const Text(
+            'SPORY',
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 24,
+            ),
+          ),
         ),
         body: Padding(
           padding: const EdgeInsets.all(12),
@@ -170,35 +206,41 @@ class _LocationPageState extends State<LocationPage> {
                       borderRadius: BorderRadius.circular(25),
                     ),
                   ),
-                  child: NaverMap(
-                    options: NaverMapViewOptions(
-                      locationButtonEnable: true,
-                      initialCameraPosition: NCameraPosition(
-                        target: initialTarget,
-                        zoom: 15, // 초기 줌 레벨
-                        bearing: 0,
-                        tilt: 0,
+                  child: ClipRRect(
+                    // 맵 위젯도 둥근 모서리가 적용되도록 ClipRRect 추가
+                    borderRadius: BorderRadius.circular(25),
+                    child: NaverMap(
+                      options: NaverMapViewOptions(
+                        locationButtonEnable: true,
+                        initialCameraPosition: NCameraPosition(
+                          target: initialTarget,
+                          zoom: 15, // 초기 줌 레벨
+                          bearing: 0,
+                          tilt: 0,
+                        ),
                       ),
-                    ),
-                    onMapReady: (controller) {
-                      _mapController = controller;
-                      // 지도가 준비된 후, 위치 정보가 있다면 오버레이를 설정하고 카메라를 이동시킵니다.
-                      if (_currentLocationData != null) {
-                        _updateLocationOverlay(_currentLocationData!);
-                        // 지도의 카메라를 현재 위치로 이동시킵니다.
-                        _mapController!.updateCamera(
-                          NCameraUpdate.fromCameraPosition(
-                            NCameraPosition(
-                              target: NLatLng(
-                                _currentLocationData!.latitude!,
-                                _currentLocationData!.longitude!,
+                      onMapReady: (controller) {
+                        _mapController = controller;
+                        // 지도가 준비된 후, 위치 정보가 있다면 오버레이를 설정하고 카메라를 이동시킵니다.
+                        if (_currentLocationData != null) {
+                          _updateLocationOverlay(_currentLocationData!);
+                          // 지도의 카메라를 현재 위치로 이동시킵니다.
+                          _mapController!.updateCamera(
+                            NCameraUpdate.fromCameraPosition(
+                              NCameraPosition(
+                                target: NLatLng(
+                                  _currentLocationData!.latitude!,
+                                  _currentLocationData!.longitude!,
+                                ),
+                                zoom: 15,
                               ),
-                              zoom: 15,
                             ),
-                          ),
-                        );
-                      }
-                    },
+                          );
+                        }
+                        // 짐웨이 마커 추가 호출
+                        _addGymwayMarker();
+                      },
+                    ),
                   ),
                 ),
               ],

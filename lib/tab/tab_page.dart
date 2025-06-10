@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'account/account_page.dart';
 import 'home/home_page.dart';
 import 'location/location_page.dart'; // LocationPage
-import 'search/search_page.dart';
+import 'search/category_page.dart';
 import 'story/story_page.dart';
 
 class TabPage extends StatefulWidget {
@@ -29,9 +29,9 @@ class _TabPageState extends State<TabPage> {
 
   List<Widget> getPages() {
     return [
-      HomePage(),
+      // HomePage(),
       LocationPage(), // <--- 여기서 locationData 인자를 제거했습니다.
-      SearchPage(),
+      CategoryPage(),
       StoryPage(),
       AccountPage(),
     ];
@@ -62,10 +62,10 @@ class _TabPageState extends State<TabPage> {
             });
           },
           items: const <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: '홈',
-            ),
+            // BottomNavigationBarItem(
+            //   icon: Icon(Icons.home),
+            //   label: '홈',
+            // ),
             BottomNavigationBarItem(
               icon: Icon(Icons.place),
               label: '지도',

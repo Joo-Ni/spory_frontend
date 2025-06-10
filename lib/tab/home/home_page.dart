@@ -27,10 +27,16 @@ class _HomePageState extends State<HomePage> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Spory'),
+          title: const Text(
+            'SPORY', //
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 24,
+            ),
+          ),
         ),
         body: Padding(
-          padding: const EdgeInsets.all(8),
+          padding: const EdgeInsets.all(12),
           child: SingleChildScrollView(
             child: Column(
               children: [

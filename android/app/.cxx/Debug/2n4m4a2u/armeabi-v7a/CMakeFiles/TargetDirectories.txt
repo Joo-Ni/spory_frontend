@@ -1,0 +1,2 @@
+D:/Develop/sports_connect_need_backend/sports_connect/android/app/.cxx/Debug/2n4m4a2u/armeabi-v7a/CMakeFiles/edit_cache.dir
+D:/Develop/sports_connect_need_backend/sports_connect/android/app/.cxx/Debug/2n4m4a2u/armeabi-v7a/CMakeFiles/rebuild_cache.dir
