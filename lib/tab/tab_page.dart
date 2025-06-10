@@ -1,12 +1,13 @@
+// lib/tab/tab_page.dart
 import 'package:flutter/material.dart';
-import 'package:location/location.dart';
+// import 'package:location/location.dart'; // 더 이상 여기서 직접 사용하지 않습니다.
+// import 'package:sports_connect/location/location_model.dart'; // 더 이상 여기서 직접 초기화하지 않습니다.
 
 import 'account/account_page.dart';
-// import 'home/home_page.dart';
-import 'location/location_page.dart';
+import 'home/home_page.dart';
+import 'location/location_page.dart'; // LocationPage
 import 'search/search_page.dart';
 import 'story/story_page.dart';
-import 'location/loacation_model.dart';
 
 class TabPage extends StatefulWidget {
   const TabPage({super.key});
@@ -17,26 +18,19 @@ class TabPage extends StatefulWidget {
 
 class _TabPageState extends State<TabPage> {
   int _currentIndex = 0;
-  LocationData? locationData;
+  // LocationData? locationData; // 더 이상 여기서 직접 관리하지 않습니다.
 
   @override
   void initState() {
     super.initState();
-    _initializeServices(); // 초기화 함수 호출
   }
 
-  Future<void> _initializeServices() async {
-    await NMapService.initializeNaverMap();
-    locationData = await LocationService.getLocationData();
-    if (mounted) {
-      setState(() {});
-    }
-  }
+  // Future<void> _initializeServices() async { /* 이 함수는 이제 필요 없습니다. */ }
 
   List<Widget> getPages() {
     return [
-      //HomePage(),
-      LocationPage(locationData: locationData), // 수정된 부분
+      HomePage(),
+      LocationPage(), // <--- 여기서 locationData 인자를 제거했습니다.
       SearchPage(),
       StoryPage(),
       AccountPage(),
@@ -68,10 +62,10 @@ class _TabPageState extends State<TabPage> {
             });
           },
           items: const <BottomNavigationBarItem>[
-            // BottomNavigationBarItem(
-            //   icon: Icon(Icons.home),
-            //   label: '홈',
-            // ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              label: '홈',
+            ),
             BottomNavigationBarItem(
               icon: Icon(Icons.place),
               label: '지도',
@@ -89,8 +83,8 @@ class _TabPageState extends State<TabPage> {
               label: '마이페이지',
             ),
           ],
-          selectedItemColor: Color.fromARGB(255, 43, 180, 153), // 선택된 아이템 색상
-          unselectedItemColor: Colors.grey, // 선택되지 않은 아이템 색상
+          selectedItemColor: const Color.fromARGB(255, 43, 180, 153),
+          unselectedItemColor: Colors.grey,
         ),
       ),
     );

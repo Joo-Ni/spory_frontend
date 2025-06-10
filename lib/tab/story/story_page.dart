@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart'; // table_calendar 임포트
 
-import '../../create/create_page.dart'; // CreatePage가 있다고 가정
+import 'create/create_page.dart'; // CreatePage가 있다고 가정
 
 class StoryPage extends StatefulWidget {
   const StoryPage({super.key});
