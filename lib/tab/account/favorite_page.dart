@@ -28,14 +28,7 @@ class _FavoritePageState extends State<FavoritePage> {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text('$facilityName 즐겨찾기에서 해제됨')),
         );
-      } else {
-        // (이 페이지에서는 발생하지 않겠지만) 만약 없는 항목을 다시 추가한다면
-        // SearchPage의 데이터를 가져와야 합니다. 여기서는 간략하게 처리.
-        // 예를 들어, 실제 앱에서는 DB에서 해당 항목을 찾아 다시 추가하는 로직이 필요합니다.
-        // ScaffoldMessenger.of(context).showSnackBar(
-        //   SnackBar(content: Text('$facilityName 즐겨찾기에 다시 추가됨 (미구현)')),
-        // );
-      }
+      } else {}
     });
   }
 

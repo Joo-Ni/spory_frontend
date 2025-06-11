@@ -50,8 +50,8 @@ class _AccountPageState extends State<AccountPage> {
             IconButton(
               icon: Icon(logoutIcon), //
               onPressed: () {
-                ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('로그아웃 기능 (Firebase 미연동)')));
+                ScaffoldMessenger.of(context)
+                    .showSnackBar(const SnackBar(content: Text('로그아웃 기능')));
               },
             ),
           ],

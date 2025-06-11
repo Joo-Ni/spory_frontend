@@ -25,10 +25,6 @@ class _CategoryPageState extends State<CategoryPage> {
 
   @override
   Widget build(BuildContext context) {
-    // Size screenSize = MediaQuery.of(context).size; // 사용되지 않으므로 제거
-    // double width = screenSize.width; // 사용되지 않으므로 제거
-    // double height = screenSize.height; // 사용되지 않으므로 제거
-
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
