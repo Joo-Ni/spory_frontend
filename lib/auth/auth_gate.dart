@@ -25,7 +25,6 @@ class _AuthGateState extends State<AuthGate> {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: 백엔드 연결 후 로그인 여부에 따라 다른 페이지로 이동 (예: 로그인 페이지 또는 TabPage)
     // 현재는 임시로 UI를 보여주고 "Continue" 버튼을 누르면 TabPage로 이동합니다.
 
     return Scaffold(
@@ -50,9 +49,9 @@ class _AuthGateState extends State<AuthGate> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              const SizedBox(height: 40),
+              const SizedBox(height: 1),
               Text(
-                '계정을 생성하세요',
+                '로그인하세요',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 22,
@@ -62,7 +61,7 @@ class _AuthGateState extends State<AuthGate> {
               ),
               const SizedBox(height: 8),
               Text(
-                '계정을 생성하려면 이메일을 입력하세요',
+                '로그인 또는 회원가입을 위해 이메일을 입력하세요',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 16,

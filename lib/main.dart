@@ -3,7 +3,7 @@ import 'package:location/location.dart';
 
 import 'tab/location/location_model.dart';
 import 'tab/tab_page.dart'; // auth_gate 사용시(tab_page로 바로 이동x일 경우) 주석처리
-// import 'auth/auth_gate.dart';    // auth_gate 사용시 주석 해제
+import 'auth/auth_gate.dart'; // auth_gate 사용시 주석 해제
 
 void main() async {
   // 네이버 지도
@@ -32,8 +32,8 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
         useMaterial3: true,
       ),
-      home: TabPage(locationData: locationData), // 로그인 없이 메인 페이지로 이동
-      // home: AuthGate(locationData: locationData),  // 로그인 페이지로 이동
+      // home: TabPage(locationData: locationData), // 로그인 없이 메인 페이지로 이동
+      home: AuthGate(locationData: locationData), // 로그인 페이지로 이동
     );
   }
 }
