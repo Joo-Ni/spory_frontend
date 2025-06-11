@@ -2,16 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:location/location.dart';
 
 import 'tab/location/location_model.dart';
-import 'tab/tab_page.dart';
+import 'tab/tab_page.dart'; // auth_gate 사용시(tab_page로 바로 이동x일 경우) 주석처리
+// import 'auth/auth_gate.dart';    // auth_gate 사용시 주석 해제
 
 void main() async {
+  // 네이버 지도
   await NMapService.initializeNaverMap();
+  // 위치 정보(main->(auth)->tabPage->locationPage)
   LocationData? locationData;
   try {
     locationData = await LocationService.getLocationData();
   } catch (e) {
     debugPrint("위치 정보를 가져오는 데 실패했습니다: $e");
-    // 사용자에게 오류를 알리거나 기본 위치를 설정하는 등의 추가 처리가 필요할 수 있습니다.
   }
 
   runApp(MyApp(locationData: locationData));
@@ -30,7 +32,8 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
         useMaterial3: true,
       ),
-      home: TabPage(),
+      home: TabPage(locationData: locationData), // 로그인 없이 메인 페이지로 이동
+      // home: AuthGate(locationData: locationData),  // 로그인 페이지로 이동
     );
   }
 }
