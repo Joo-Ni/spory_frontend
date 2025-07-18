@@ -6,7 +6,7 @@ class NMapService {
   static Future<void> initializeNaverMap() async {
     WidgetsFlutterBinding.ensureInitialized();
     await NaverMapSdk.instance.initialize(
-      clientId: 'cknqa158d7',
+      clientId: 'clientId',
       onAuthFailed: (ex) {
         debugPrint("********* 네이버맵 인증오류 : $ex *********");
       },
